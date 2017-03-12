@@ -4,19 +4,13 @@
 
 #include<iostream>
 #include <windows.h>
-#include <conio.h>       // 'getch'
+#include <conio.h>
 #include <stdio.h>
 #include <string.h>
 #include <stdlib.h>
-//#include <cstdlib>
-//#include <cstring>
-#include <fstream>       // read-save file
-//#include <ctime>
+#include <fstream>
 #include <time.h>
-//#include <math.h>
-
 #include <utilcls.h>
-//#include <ComObj.hpp>
 
 
 #include "Unit54.h"
@@ -88,7 +82,6 @@ for (int i=0; i<6; i++)ComboBox2->Items->Add(speed1[i]);
 
 void __fastcall TForm1::Button2Click(TObject *Sender)
 {
-//AnsiString FileExc=GetCurrentDir()+"\\data5.xlsx";
 ifstream file2 (FileName2.c_str());
 if(file2==NULL) {
 isw2=1;
@@ -170,16 +163,14 @@ SetCommState(port, &dcb);
 
 while (isw1==1){
 
-ReadFile(port, answer, 1, &n, NULL);   //& sizeof(answer)-1  m=atoi(answer);
+ReadFile(port, answer, 1, &n, NULL);
 if(n>0){
 
 if (answer[0] !='\t' && answer[0] !='\n') cx1[cnt1]= answer[0], cnt1++;
 else {
  em1 = atoi (cx1);
  cnt1=0;
-
-//delete [] cx1;
-
+        
 cnt2++;
 
 if(CheckBox1->Checked == true){
@@ -257,7 +248,6 @@ SelectDirectory("","",FileName1);
 sSaveDialog1->Execute();
 sSaveDialog1->InitialDir = FileName1;
 FileName2=sSaveDialog1->FileName+".xlsx";
-//ShowMessage(FileName2);
 
 mExcel = CreateOleObject("Excel.Application");
 mExcel.OlePropertyGet("Workbooks").OleProcedure("Add");
@@ -271,13 +261,11 @@ Label5->Caption=FileName2;
 
 void __fastcall TForm1::Open1Click(TObject *Sender)
 {
-//SelectDirectory(FileName1,TSelectDirOpts() << sdAllowCreate << sdPerformCreate << sdPrompt, 0);
 
 SelectDirectory("","",FileName1);
 sOpenDialog1->Execute();
 sOpenDialog1->InitialDir = FileName1;
 FileName2=sOpenDialog1->FileName;
-//ShowMessage(sOpenDialog1->FileName);
 
 Label4->Caption="File open";
 Label5->Caption=FileName2;
@@ -303,14 +291,13 @@ break;
 
 void __fastcall TForm1::Help1Click(TObject *Sender)
 {
- ShowMessage("Раздел в разработке\nЗапись выполняется в файл xls");
+ ShowMessage("");
 }
 //---------------------------------------------------------------------------
 
 
 void __fastcall TForm1::Exit1Click(TObject *Sender)
 {
-//mExcel.OleProcedure("Quit");
 SendMessage(Handle,WM_CLOSE,NULL,NULL);        
 }
 //---------------------------------------------------------------------------
